@@ -3,11 +3,19 @@ body {
   font-family: cursive;
 }
 
+.textarea {
+  width: 50%;
+  margin: auto;
+  margin-top: 10%;
+  text-align: center;
+}
+
 #owner {
   position: fixed;
   bottom: 0;
   right: 1%;
   border-top: 1px solid rgb(218, 218, 218);
+  z-index: 100;
 }
 
 #owner > h6 {
