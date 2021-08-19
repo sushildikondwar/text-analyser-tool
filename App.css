@@ -6,8 +6,13 @@ body {
 .textarea {
   width: 50%;
   margin: auto;
-  margin-top: 10%;
   text-align: center;
+  margin-top: 2px;
+}
+
+#clear-button {
+  position: fixed;
+  right: 25%;
 }
 
 #owner {
@@ -21,4 +26,27 @@ body {
 #owner > h6 {
   margin: 2px;
   color: rgb(214, 214, 214);
+}
+
+p {
+  margin-left: 5%;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .textarea {
+    width: 75%;
+    margin-top: 5px;
+  }
+
+  #clear-button {
+    position: fixed;
+    right: 8%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  p {
+    margin-left: 5%;
+    margin-bottom: 0;
+  }
 }
