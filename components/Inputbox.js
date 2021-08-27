@@ -1,49 +1,59 @@
 import React from 'react'
 import { useState } from 'react'
+import { ImCopy } from 'react-icons/im'
+import { FcCheckmark } from 'react-icons/fc'
 
-export default function Inputbox() {
-
-    // The value inside useState function parameter will be set as the value of text variable by default
-    // Later on, if we want to change the value of text, then we cannot change its value directly by assigning the value
-    // So, We have to use loadtext function
-    // The value passed as the parameter inside loadtext function will get received by the text variable and the new value inside text variable get assigned
+export default function Inputbox(props) {
 
     const [text, loadtext] = useState("");
     const [button, loadbutton] = useState("Capitalizer");
+    const [copybutton, loadcopybutton] = useState(<ImCopy />);
 
-    const writetextbox = (event) => {    // We are taking each value inside the textbox and passing it to the text variable using onChange event listener
-        loadtext(event.target.value)        // As the text variable is getting updated,simultaneously its value is also getting passed inside
-    }                                           //  textarea(as text is passed as a javascript variable inside 'value' property inside textarea tag)
+    const writetextbox = (event) => {    
+        loadtext(event.target.value)        
+    }                                          
 
-    const capitalizerclick = () => {        //  update the State of text variable, also inside 'value' property of textarea tag and also change State of Button
-        if (text !== text.toUpperCase()) {      //  Checking if text inside input box is in Uppercase
-            loadtext(text.toUpperCase());       //  Value inside text variable capitalized and again sent to loadtext function
+    const capitalizerclick = () => {        
+        if (text !== text.toUpperCase()) {      
+            loadtext(text.toUpperCase());      
             loadbutton("De-Capitalizer");
         }
         else {
-            loadtext(text.toLowerCase());       //  If text is in Uppercase
-            loadbutton("Capitalizer");      
+            loadtext(text.toLowerCase());       
+            loadbutton("Capitalizer");
         }
     }
-    
-    const cleartext = () => {       //  Clear Text-Box
+
+    const cleartext = () => {       
         loadtext("");
+    }
+
+    const copyclick = () => {
+        if(text!=="") {
+            loadcopybutton(<FcCheckmark padding="0"/>);
+            navigator.clipboard.writeText(text);
+            setTimeout(() => {
+                loadcopybutton(<ImCopy />);
+            }, 1500);
+        }
     }
 
     return (
         <>
-            <div className="container">
+            <div className="container" style={{position: "relative"}}>
                 <button className="btn btn-danger" id="clear-button" onClick={cleartext}>X</button>
                 <div className="textarea">
-                    <textarea className="form-control" id="text-box" rows="7" value={text} onChange={writetextbox}></textarea>
+                    <textarea className="form-control" id="text-box" rows="7" value={text} onChange={writetextbox} style={{ backgroundColor: props.DisplayMode === 'light' ? '#ffffff' : '#020321', color: props.DisplayMode === 'light' ? '#212529' : 'gray' }} ></textarea>
                     <button className="btn btn-primary" id="form-button" onClick={capitalizerclick}>{button}</button>
+                    <button className="btn btn-white" id="copy-button-sm-screen" onClick={copyclick}>{copybutton}</button>        {/*for smaller screens*/}
+                    <button className="btn btn-light" id="copy-button" onClick={copyclick}>{copybutton}</button>      {/* for larger screens */}
                 </div>
             </div>
             <div className="container">
                 <h5>Summary: </h5>
-                <p>Characters: {text.length}</p>      {/*number of Characters/*/}
-                <p>Words: {text.split(" ").length - 1}</p>      {/*number of space-separated words (it was calculating an empty space as 1, therefore wordcount = totalwordcount-1)*/}
-                <p>{((text.split(" ").length - 1) * 0.004).toFixed(3)} Minutes to Read</p>      {/*Avg. reading speed 250 wpm, [wordlength*(time-to-read-one-word)], fixed upto 3 decimal values*/}
+                <p>Characters: {text.length}</p>
+                <p>Words: {text.trim() === "" ? 0 : text.split(" ").length}</p>
+                <p>{(text.trim() === "" ? 0 : (text.split(" ").length) * 0.004).toFixed(3)} Minutes to Read</p>
             </div>
         </>
     )

@@ -1,6 +1,27 @@
 
 body {
   font-family: cursive;
+  transition: 0.5s ease-in;
+  -webkit-transition: 0.5s ease-in;
+  -moz-transition: 0.5s ease-in;
+  -ms-transition: 0.5s ease-in;
+  -o-transition: 0.5s ease-in;
+}
+
+.container-fluid {
+  transition: 0.5s ease-in;
+  -webkit-transition: 0.5s ease-in;
+  -moz-transition: 0.5s ease-in;
+  -ms-transition: 0.5s ease-in;
+  -o-transition: 0.5s ease-in;
+}
+
+.navbar {
+  transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
 }
 
 .textarea {
@@ -13,6 +34,20 @@ body {
 #clear-button {
   position: fixed;
   right: 25%;
+}
+
+#copy-button {
+  margin: 0;
+  margin-top: -1%;
+  display: inline-block;
+  position: fixed;
+  right: 25%;
+  size: 10%;
+  box-shadow: none;
+}
+
+#copy-button-sm-screen {
+  display: none;
 }
 
 #owner {
@@ -44,6 +79,19 @@ p {
     right: 8%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
+
+  #copy-button {
+    display: none;
+  }
+
+  #copy-button-sm-screen {
+    margin: 0;
+    margin-top: -5%;
+    display: inline-block;
+    position: fixed;
+    right: 6%;
+    box-shadow: none;
+}
 
   p {
     margin-left: 5%;
