@@ -1,6 +1,7 @@
 import React from 'react';
 import { TiWeatherSunny } from 'react-icons/ti';
 import { BiMoon } from 'react-icons/bi';
+import Colorpallet from './Colorpalette';
 
 export default function Navbar(props) {
     return (
@@ -20,9 +21,10 @@ export default function Navbar(props) {
                                 <a className="nav-link" href="/">{props.about}</a>
                             </li>
                         </ul>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onClick={props.changeMode}/>
-                            <label class="form-check-label" for="flexSwitchCheckDefault">{props.DisplayMode==='light'?<TiWeatherSunny size="1.8em" />:<BiMoon size="1.8em" />}</label>
+                        <Colorpallet DisplayMode={props.DisplayMode} customBG={props.customBG} setCustomBG={props.setCustomBG} />
+                        <div className="form-check form-switch">
+                            <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onClick={props.changeMode}/>
+                            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{props.DisplayMode==='light'?<TiWeatherSunny size="1.8em" />:<BiMoon size="1.8em" />}</label>
                         </div>
                     </div>
                 </div>
