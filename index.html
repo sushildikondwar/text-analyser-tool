@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script>window.location.replace("https://my-text-analyser.firebaseapp.com/")</script> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .outerbox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+        }
+        .outerbox div {
+            width: 98%;
+            height: 95vh;
+            background-color: gainsboro;
+            border-radius: 10px;
+        }
+        #name {
+            margin-top: 5%;
+            display: block;
+            text-align: center;
+            color: rgb(236, 236, 236);
+            /* font-size: xxx-large; */
+            font-family: cursive;
+            letter-spacing: 0.1em;
+            font-size: 4em;
+        }
+        #welcome {
+            color: rgb(236, 236, 236);
+            display: block;
+            margin-top: 2%;
+            text-align: center;
+            font-family: cursive;
+            letter-spacing: 0.1em;
+            font-size: 3em;
+        }
+        #line {
+            margin-top: 3%;
+            display: block;
+            text-align: center;
+            color: rgb(236, 236, 236);
+            /* font-size: xxx-large; */
+            font-family: cursive;
+            letter-spacing: 0.1em;
+            font-size: 3.5em;
+        }
+        #redirect {
+            margin-top: 5%;
+            display: block;
+            text-align: center;
+            color: rgb(236, 236, 236);
+            /* font-size: xxx-large; */
+            font-family: cursive;
+            letter-spacing: 0.1em;
+            font-size: 2.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outerbox">
+        <div>
+            <h1 id="name">Sushil Dikondwar</h1>
+            <h1 id="welcome">Welcomes You</h1>
+            <h1 id="line">----------------------</h1>
+            <h2 id="redirect">Page is being Redirected to Project</h2>
+        </div>
+    </div>
+<script>
+    window.onload = () => {
+        setInterval(() => {
+            document.getElementById("redirect").innerHTML = document.getElementById("redirect").innerHTML + "."
+        }, 500);
+        setTimeout(() => {
+            window.location.replace("https://my-text-analyser.firebaseapp.com/");            
+        }, 2000);
+    }
+</script>
+</body>
+
+</html>
